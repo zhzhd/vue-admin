@@ -5,7 +5,7 @@
         <Menu :theme="theme" :accordion="accordion" @on-select="handleSelect"  @on-open-change="handleSubmenu" :active-name="activeName" :open-names="openedNames">
             <template v-for="(item, index) in sliderItems">
                 <template v-if="!item.childMenuList">
-                    <MenuItem :name="item.name">
+                    <MenuItem :name="item.name" :to="item.url">
                         <Icon :type="item.icon"/>
                         <!-- <common-icon :type="item.icon" /> -->
                         {{ item.name}}
@@ -17,7 +17,7 @@
                             <Icon :type="item.icon" />
                             {{ item.name }}
                         </template>
-                        <MenuItem v-for="(child, count) in item.childMenuList" :key="count" :name="item.name + '-' + child.name">{{ child.name }}</MenuItem>
+                        <MenuItem v-for="(child, count) in item.childMenuList" :key="count" :name="item.name + '-' + child.name" :to="item.url + '/' + child.url">{{ child.name }}</MenuItem>
                     </Submenu>
                 </template>
             </template>

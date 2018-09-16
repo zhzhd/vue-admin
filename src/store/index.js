@@ -16,18 +16,18 @@ const state = {
     sliderMenuList: [
         {
             name: '企业信息',
-            url: 'home',
+            url: '/company',
             icon: 'ios-home'
         },
         {
             name: '用户管理',
-            url: 'users',
+            url: '/users',
             icon: 'md-contacts'
 
         },
         {
             name: '产品管理',
-            url: 'product',
+            url: '/product',
             icon: 'ios-albums',
             childMenuList: [
                 {
@@ -47,7 +47,7 @@ const state = {
         {
             name: '考勤统计',
             icon: 'ios-clock',
-            url: 'attendance',
+            url: '/attendance',
             childMenuList: [
                 {
                     name: '考勤异常',
@@ -61,7 +61,7 @@ const state = {
         },
         {
             name: '监督管理',
-            url: 'supervision',
+            url: '/supervision',
             icon: 'ios-alert',
             childMenuList: [
                 {
@@ -84,27 +84,27 @@ const state = {
         },
         {
             name: '经营状况',                     //管理权限
-            url: 'operation',
+            url: '/operation',
             icon: 'ios-stats'
         },
         {
             name: '意见反馈',
-            url: 'feedback',
+            url: '/feedback',
             icon: 'ios-bulb'
         },
         {
             name: '帮助中心',
-            url: 'help',
+            url: '/helpCenter',
             icon: 'ios-help-circle'
         },
         {
             name: '系统管理',
-            url: 'stystem', 
+            url: '/system', 
             icon: 'ios-cog',                    //管理权限
             childMenuList: [
                 {
                     name: '菜单维护',
-                    url: 'edtion'
+                    url: 'edit'
                 },
                 {
                     name: '发布产品',
