@@ -2,22 +2,21 @@
     <aside ref="aside">
         <head-image :headImageUrl="headImageUrl"></head-image>
         <search-ipt style="margin: 15px 20px;"></search-ipt>
-        <Menu :theme="theme" :accordion="accordion" @on-select="handleSelect"  @on-open-change="handleSubmenu" :active-name="activeName" :open-names="openedNames">
+        <Menu ref="slider" :theme="theme" :accordion="accordion" @on-select="handleSelect($event)"  @on-open-change="handleSubmenu" :active-name="activeName" :open-names="openNames">
             <template v-for="(item, index) in sliderItems">
                 <template v-if="!item.childMenuList">
-                    <MenuItem :name="item.name" :to="item.url">
+                    <MenuItem :name="item.url" :to="item.url">
                         <Icon :type="item.icon"/>
-                        <!-- <common-icon :type="item.icon" /> -->
                         {{ item.name}}
                     </MenuItem>
                 </template>
                 <template v-else>
-                    <Submenu :key="index" :name="item.name">
+                    <Submenu :key="index" :name="item.url">
                         <template slot="title">
                             <Icon :type="item.icon" />
                             {{ item.name }}
                         </template>
-                        <MenuItem v-for="(child, count) in item.childMenuList" :key="count" :name="item.name + '-' + child.name" :to="item.url + '/' + child.url">{{ child.name }}</MenuItem>
+                        <MenuItem v-for="(child, count) in item.childMenuList" :key="count" :name="item.url + '/' + child.url" :to="item.url + '/' + child.url" >{{ child.name }}</MenuItem>
                     </Submenu>
                 </template>
             </template>
@@ -51,14 +50,14 @@ import SearchIpt from './children/SearchIpt'
                 accordion: true,
                 asideHeight: null,
                 activeName: '',
-                openedNames: [],
-                closeSubMenu: '',
+                openNames: [],
+                nameReg: /^[\/][a-zA-Z]*\/[a-zA-Z]/
             }
         },
         methods: {
             initData () {
                 this.sliderItems = this.sliderMenuList;
-                this.activeName = this.sliderItems[0].name;
+                this.getOpendNamesByRoute();
             },
             getWindowInnerHeight () {
                 let height = window.innerHeight;
@@ -66,30 +65,45 @@ import SearchIpt from './children/SearchIpt'
                 this.$refs.aside.style.height = this.asideHeight;
             },
             handleSelect (name) {
-                if (name.indexOf('-') > 0) return;
-                console.log(name);
+                if(!this.nameReg.test(name)) {
+                    this.$refs.slider.$children.map((item) => {
+                        if (item.opened) {
+                            this.openNames = [];
+                            return item.opened = false;
+                        }
+                    })
+                }
             },
-            handleSubmenu (name) {
-                console.log( name );
-                
-            },
-            getOpendMenuDom () {
-                var dom = document.querySelector('.ivu-menu-opened');
-                return dom;
+            handleSubmenu (name) {},
+            getOpendNamesByRoute () {
+                let len = this.$route.matched.length;
+                // if (len == 1) {
+                //     this.activeName = this.sliderMenuList[0].url;
+                // }
+                if (this.$route.matched[1]) {
+                    var _path = this.$route.matched[1].path;
+                    this.activeName = _path;
+                }
+                if (len > 2) {
+                    this.activeName = this.$route.matched[len - 1].path;
+                    this.openNames.push(_path)
+                } 
             }
         },
         watch: {
             activeName (name) {
-
+                
             },
-            // closeSubMenu () {
-            //     this.$nextTick( () => {
-            //         this.$refs.aside.updateOpened();
-            //     })
-            // }
+            openNames (newName) {
+                
+            }
         },
         mounted() {
             this.getWindowInnerHeight();
+            this.$nextTick(() => {
+                this.$refs.slider.updateOpened();
+                this.$refs.slider.updateActiveName();
+            })
         },
         computed: {
             ...mapState(['sliderMenuList'])

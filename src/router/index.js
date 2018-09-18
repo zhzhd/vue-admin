@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Login from '@/components/login/Login'
 import Index from '@/components/Index'
 import Company from '@/components/companyInfo/Company'
 import ManagerUsers from '@/components/users/ManagerUsers'
@@ -137,7 +138,9 @@ export default new Router({
       
     },
     {
-      path: '/login'
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     // {
     //   path: '/company',

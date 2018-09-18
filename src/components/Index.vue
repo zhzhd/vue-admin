@@ -4,19 +4,24 @@
       <slider-bar></slider-bar>
     </div>
     <div class="container">
-      <header>这是一个公共的头部，有退出和关闭左侧菜单的功能，还有考勤打卡的功能</header>
+      <!-- <header>这是一个公共的头部，有退出和关闭左侧菜单的功能，还有考勤打卡的功能</header> -->
+      <Header></Header>
       <router-view></router-view>
-      <footer>这是页面的脚</footer>
+      <Footer></Footer>
     </div>
   </div>
 </template>
 
 
 <script>
+import Header from './commen/Header'
+import Footer from './commen/Footer'
 import SliderBar from './sidebar/SliderBar'
 export default {
   name: 'Index',
   components: {
+    Footer,
+    Header,
     SliderBar
   },
   data () {
