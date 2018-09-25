@@ -1,16 +1,31 @@
 <template>
-    <div class="head-image">
-        <img :src="styleBg">
+    <div class="head-image" :style="'backgroundImage: url(' + styleBg + ')'">
+        <p> {{ userName }} </p>
+        <p :class="online ? 'online' : 'offline'" v-html="online ? '<i></i>online' : '<i></i>offline'"></p>
     </div>
 </template>
 <style lang="less" scoped>
     .head-image{
-        text-align:center;
-        img {
-            width: 104px;
-            height: 104px;
+        height: 104px;
+        color: #fff;
+        background-size: 80px 80px;
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: 90px;
+        padding-top: 55px;
+        p:last-child::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            overflow: hidden;
+            margin-right: 5px;
+        }
+        .online::before {
+            background-color: green;
+        }
+        .offline::before {
+            background-color: #999;
         }
     }
 </style>
@@ -29,9 +44,8 @@ const defaultHead = require('../../../assets/images/default-head.png');
         data () {
             return {
                 styleBg: this.headImageUrl ? this.headImageUrl : `${defaultHead}`,
-                bg: {
-                    'background-image': 'url(' + this.styleBg + ')'
-                }
+                userName: "用户名",
+                online: true 
             }
         },
         methods: {

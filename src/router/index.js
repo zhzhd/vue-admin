@@ -27,7 +27,7 @@ import OperationLog from '@/components/system/OperationLog'
 Vue.use(Router)
 
 export default new Router({
-  model: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/',

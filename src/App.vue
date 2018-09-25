@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style>
-
+  #app {
+    padding-left: 240px;
+  }
 </style>

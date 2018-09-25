@@ -2,7 +2,7 @@
     <aside ref="aside">
         <head-image :headImageUrl="headImageUrl"></head-image>
         <search-ipt style="margin: 15px 20px;"></search-ipt>
-        <Menu ref="slider" :theme="theme" :accordion="accordion" @on-select="handleSelect($event)"  @on-open-change="handleSubmenu" :active-name="activeName" :open-names="openNames">
+        <Menu ref="slider" :theme="theme" :accordion="accordion" @on-select="handleSelect"  @on-open-change="handleSubmenu" :active-name="activeName" :open-names="openNames">
             <template v-for="(item, index) in sliderItems">
                 <template v-if="!item.childMenuList">
                     <MenuItem :name="item.url" :to="item.url">
@@ -11,7 +11,7 @@
                     </MenuItem>
                 </template>
                 <template v-else>
-                    <Submenu :key="index" :name="item.url">
+                    <Submenu :key="index" :name="item.url" :data-index="item.childMenuList.length">
                         <template slot="title">
                             <Icon :type="item.icon" />
                             {{ item.name }}
@@ -62,7 +62,7 @@ import SearchIpt from './children/SearchIpt'
             getWindowInnerHeight () {
                 let height = window.innerHeight;
                 this.asideHeight = height + 'px';
-                this.$refs.aside.style.height = this.asideHeight;
+                this.$refs.aside.style.minHeight = this.asideHeight;
             },
             handleSelect (name) {
                 if(!this.nameReg.test(name)) {
@@ -74,12 +74,17 @@ import SearchIpt from './children/SearchIpt'
                     })
                 }
             },
-            handleSubmenu (name) {},
+            handleSubmenu (name) {
+                let count = event.target.parentElement.getAttribute('data-index');
+                let height = window.innerHeight;
+                // if (name.length > 0) {
+                //     this.asideHeight = (height + count * 49) + 'px';
+                // } else {
+                //     this.asideHeight = height + 'px';
+                // }
+            },
             getOpendNamesByRoute () {
                 let len = this.$route.matched.length;
-                // if (len == 1) {
-                //     this.activeName = this.sliderMenuList[0].url;
-                // }
                 if (this.$route.matched[1]) {
                     var _path = this.$route.matched[1].path;
                     this.activeName = _path;
@@ -96,17 +101,22 @@ import SearchIpt from './children/SearchIpt'
             },
             openNames (newName) {
                 
-            }
+            },
+            // asideHeight(oldHeight, newHeight) {
+                
+            // }
         },
         mounted() {
             this.getWindowInnerHeight();
             this.$nextTick(() => {
                 this.$refs.slider.updateOpened();
                 this.$refs.slider.updateActiveName();
+                this.getWindowInnerHeight();
             })
         },
         computed: {
-            ...mapState(['sliderMenuList'])
+            ...mapState(['sliderMenuList']),
+            
         }
     }
 </script>

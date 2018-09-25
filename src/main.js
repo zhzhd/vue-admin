@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Message, Layout, Sider, Menu, Submenu, MenuItem, Icon} from 'iview'
+import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Message, Sider, Menu, Submenu, MenuItem, Icon, Select, Option, Badge, Divider} from 'iview'
 import 'iview/dist/styles/iview.css'
 import './theme/index.less'
 import store from '@/store'
@@ -16,12 +16,15 @@ Vue.component('RadioGroup', RadioGroup)
 Vue.component('CheckBox', Checkbox)
 Vue.component('CheckBoxGroup', CheckboxGroup)
 Vue.component('Message', Message)
-Vue.component('Layout', Layout)
 Vue.component('Sider', Sider)
 Vue.component('Menu', Menu)
 Vue.component('Submenu', Submenu)
 Vue.component('MenuItem', MenuItem)
 Vue.component('Icon', Icon)
+Vue.component('Select', Select)
+Vue.component('Option', Option)
+Vue.component('Badge', Badge)
+Vue.component('Divider', Divider)
 Vue.prototype.$Message = Message
 Vue.config.productionTip = false
 /* eslint-disable no-new */
