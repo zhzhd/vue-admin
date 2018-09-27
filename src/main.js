@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Message, Sider, Menu, Submenu, MenuItem, Icon, Select, Option, Badge, Divider} from 'iview'
+import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Upload, Message, Sider, Menu, Submenu, MenuItem, Icon, Select, Option, Badge, Divider} from 'iview'
 import 'iview/dist/styles/iview.css'
 import './theme/index.less'
 import store from '@/store'
@@ -15,6 +15,7 @@ Vue.component('Radio', Radio)
 Vue.component('RadioGroup', RadioGroup)
 Vue.component('CheckBox', Checkbox)
 Vue.component('CheckBoxGroup', CheckboxGroup)
+Vue.component('Upload', Upload)
 Vue.component('Message', Message)
 Vue.component('Sider', Sider)
 Vue.component('Menu', Menu)

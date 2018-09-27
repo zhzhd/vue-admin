@@ -1,7 +1,7 @@
 <template>
     <aside ref="aside">
         <head-image :headImageUrl="headImageUrl"></head-image>
-        <search-ipt style="margin: 15px 20px;"></search-ipt>
+        <!-- <search-ipt style="margin: 15px 20px;"></search-ipt> -->
         <Menu ref="slider" :theme="theme" :accordion="accordion" @on-select="handleSelect"  @on-open-change="handleSubmenu" :active-name="activeName" :open-names="openNames">
             <template v-for="(item, index) in sliderItems">
                 <template v-if="!item.childMenuList">

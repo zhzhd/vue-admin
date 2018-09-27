@@ -41,12 +41,7 @@ export default {
   },
   computed: {
     getFooterRelativeTop () {
-      let height = window.innerHeight;
-      let headerHeight = this.$refs.header.style.height;
-      let innerHeight = this.$refs.inner.style.height;
-      console.log(headerHeight)
-      console.log(innerHeight)
-                
+      let height = window.innerHeight;         
     }
   }
 
@@ -59,5 +54,9 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
+  }
+  .continer-inner {
+    padding: 20px 50px;
+    background-color: #f5f5f5;
   }
 </style>
