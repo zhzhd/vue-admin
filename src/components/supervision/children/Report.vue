@@ -1,6 +1,6 @@
 <template>
 
-    <Form ref="formReport" :model="formReport" :rules="ruleValidate" :label-width="100" style="width: 480px;">
+    <Form ref="formReport" :model="formReport" :rules="ruleValidate" :label-width="100" class="form-report">
         <FormItem label="举报事项：" prop="matters">
             <Select v-model="formReport.matters" placeholder="请选择举报事项">
                 <Option v-for="(item, index) in mattersList" :value="item.label" :key="index">{{ item.label }}</Option>
@@ -32,18 +32,23 @@
         <FormItem>
             <Button shape="circle" type="primary" @click="handleSubmit('formReport')" class="report-btn">提交</Button>
         </FormItem>
-
+        <p>注：我们会严格保密您的隐私</p>
+        <p>您的举报我们核实并处理后会第一时间通过私信将处理结果发送给你，请关注</p>
     </Form>
 
     
 </template>
 <style lang="less" scoped>
-    .report-btn {
-        width: 120px;
-        height: 40px;
-        font-size: 16px;
-        // line-height: 40px;
+    .form-report {
+        width: 480px;
+        .report-btn {
+            width: 120px;
+            height: 40px;
+            font-size: 16px;
+            // line-height: 40px;
+        }
     }
+    
 </style>
 <script>
     export default {

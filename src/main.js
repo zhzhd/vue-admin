@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Upload, Message, Sider, Menu, Submenu, MenuItem, Icon, Select, Option, Badge, Divider} from 'iview'
+import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Upload, Message, Sider, Menu, Submenu, MenuItem, Icon, Select, Option, Badge, Divider, DatePicker} from 'iview'
 import 'iview/dist/styles/iview.css'
 import './theme/index.less'
 import store from '@/store'
+import './config/date.util'
 Vue.component('Button', Button)
 Vue.component('Form', Form)
 Vue.component('FormItem', FormItem)
@@ -26,6 +27,7 @@ Vue.component('Select', Select)
 Vue.component('Option', Option)
 Vue.component('Badge', Badge)
 Vue.component('Divider', Divider)
+Vue.component('DatePicker', DatePicker)
 Vue.prototype.$Message = Message
 Vue.config.productionTip = false
 /* eslint-disable no-new */
@@ -36,3 +38,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
