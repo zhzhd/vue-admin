@@ -7,7 +7,7 @@
         </FormItem>
         <FormItem label="意见和建议" prop="feedback">
             <Input type="textarea" v-model="feedbackForm.feedback" :autosize="{minRows: 4, maxRows: 8}" 
-            placeholder="请输入您的意见和建议，我们会关注您的反馈，不管改进，不断提升"></Input>
+            placeholder="请输入您的意见和建议，我们会关注您的反馈，不管改进，不断提升" />
         </FormItem>
         <FormItem prop="upload" class="form-item-square file-upload" label="附件上传：" >
             <Upload :action="uploadUrl" :format="['jpg','png','jpeg']" :max-size="2048" :on-success="uploadSuccess" :on-error="uploadError" :on-progress="uploadProgress">

@@ -14,13 +14,13 @@
             </RadioGroup>
         </FormItem>
         <FormItem label="人员姓名：" prop="userName">
-            <Input v-model="formReport.userName" placeholder="请输入姓名" :maxlength="15"></Input>
+            <Input v-model="formReport.userName" placeholder="请输入姓名" :maxlength="15" />
         </FormItem>
         <FormItem label="举报主题：" prop="topic">
-            <Input v-model="formReport.topic" placeholder="请输入20字以内" :maxlength="20"></Input>
+            <Input v-model="formReport.topic" placeholder="请输入20字以内" :maxlength="20" />
         </FormItem>
         <FormItem label="举报内容：" prop="content">
-            <Input v-model="formReport.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入举报内容" :maxlength="2000" :resize="false"></Input>
+            <Input v-model="formReport.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入举报内容" :maxlength="2000" :resize="false" />
         </FormItem>
         <FormItem prop="upload" class="form-item-square file-upload" label="附件上传：" >
             <Upload :action="uploadUrl" :format="['jpg','png','jpeg']" :max-size="2048" :on-success="uploadSuccess" :on-error="uploadError" :on-progress="uploadProgress">
