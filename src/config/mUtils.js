@@ -42,6 +42,13 @@ export const getUnionArray = (arr1, arr2) => {
 export const getHandleNumber = num => {
     return num < 10 ? '0' + num : num;
 }
+/**
+ * 返回数组中的最大值
+ * @param {Array} array 
+ */
+export const getMaxNum = (array) => {
+    return Math.max(...array);
+}
 
 
 
