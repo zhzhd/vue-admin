@@ -1,5 +1,5 @@
 <template>
-    <footer :style="{'top': footerTop}" id="footer" ref="footer">
+    <footer :style="{top: footerTop + 'px'}" id="footer" ref="footer">
         <template v-for="(item, index) in info">
             <router-link :to="item.url">{{ item.value }}</router-link>
             <Divider type="vertical" v-if="index != info.length - 1"/>
@@ -23,9 +23,13 @@
 </style>
 <script>
     export default {
+        props: {
+            footerTop: {
+                type: Number
+            }
+        },
         data () {
             return {
-                footerTop: '',
                 info: [
                     {
                         value: 'Test123',
@@ -41,25 +45,6 @@
                     }
                 ]
             }
-        },
-        created () {
-
-        },
-        methods: {
-
-        },
-        mounted () {
-            let _inner = document.querySelector('.continer-inner');
-            let _header = document.querySelector('#header');
-            let _headerH = getComputedStyle(_inner)['height'];
-            let _innerH = getComputedStyle(_header)['height'];
-            let height = window.innerHeight;
-            let footerTop = parseInt(_headerH) + parseInt(_innerH) + 5 + 100;
-            console.log(height - footerTop)
-            _inner.style.minHeight = height - footerTop + 'px';
-        },
-        computed: {
-            
         }
     }
 </script>
