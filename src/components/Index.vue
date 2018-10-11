@@ -4,7 +4,7 @@
       <div class="slider">
         <slider-bar></slider-bar>
       </div>
-      <Header ref="header"></Header>
+      <Header></Header>
       <div class="continer-inner" ref="continer">
         <router-view></router-view>
       </div>
