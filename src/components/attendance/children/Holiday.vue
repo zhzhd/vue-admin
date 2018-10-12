@@ -13,7 +13,7 @@
             <Input v-model="holidayForm.applyUserId" placeholder="这个是带出来的！" readonly />
         </FormItem>
         <FormItem label="休假及外出类型：" prop="applyType">
-            <Select v-model="holidayForm.applyType" placeholder="请选择休假及外出类型">
+            <Select v-model="holidayForm.applyType" placeholder="请选择休假及外出类型" style="width:162px;">
                 <Option v-for="(item, index) in holidayForm.applyTypeList" :value="item.label" :key="index">{{ item.label }}</Option>
             </Select>
         </FormItem>

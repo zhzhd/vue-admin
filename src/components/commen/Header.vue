@@ -2,16 +2,16 @@
     <header id="header">
         <section class="tips ">
             <Badge :count="13" type="success" :show-zero="false" class-name="t-icon" :offset="offset" :overflow-count="overflowCount">
-                <Icon type="ios-mail-outline" color="#fff" size="28" class="tips-icon"/>
+                <router-link to="/notice/private" title="我的私信"><Icon type="ios-mail-outline" color="#fff" size="28" class="tips-icon"/></router-link>
             </Badge>
             <Badge :count="12" type="warning" :show-zero="false" class-name="t-icon" :offset="offset" :overflow-count="overflowCount">
-                <Icon type="ios-notifications" color="#fff" size="28" style="margin-left: 25px;" class="tips-icon"/>
+                <router-link to="/notice/bulletin" title="企业通知"><Icon type="ios-notifications" color="#fff" size="28" style="margin-left: 25px;" class="tips-icon"/></router-link>
             </Badge>
             <span style="margin: 0 25px;">
-                <Icon type="ios-settings-outline" size="28" color="#fff" class="tips-icon"/>
+                <Icon type="ios-settings-outline" size="28" color="#fff" class="tips-icon" title="设置"/>
             </span>
             <span>
-                <Icon type="md-log-out" size="28" color="#fff" class="tips-icon"/>
+                <Icon type="md-log-out" size="28" color="#fff" class="tips-icon" title="退出"/>
             </span>
         </section>
         

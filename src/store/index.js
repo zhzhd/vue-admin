@@ -14,11 +14,11 @@ const state = {
         {value: 2, label: '已下架'}
     ],
     sliderMenuList: [
-        {
-            name: '企业信息',
-            url: '/company',
-            icon: 'ios-home'
-        },
+        // {
+        //     name: '企业信息',
+        //     url: '/company',
+        //     icon: 'ios-home'
+        // },
         {
             name: '用户管理',
             url: '/users',

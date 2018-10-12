@@ -96,15 +96,7 @@ import SearchIpt from './children/SearchIpt'
             }
         },
         watch: {
-            activeName (name) {
-                
-            },
-            openNames (newName) {
-                
-            },
-            // asideHeight(oldHeight, newHeight) {
-                
-            // }
+           
         },
         mounted() {
             this.getWindowInnerHeight();

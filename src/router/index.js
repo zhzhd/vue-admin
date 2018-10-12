@@ -23,6 +23,9 @@ import System from '@/components/system/System'
 import MenuMaintenance from '@/components/system/MenuMaintenance'
 import Release from '@/components/system/Release'
 import OperationLog from '@/components/system/OperationLog'
+import Notice from '@/components/notice/Notice'
+import Bulletin from '@/components/notice/children/Bulletin'
+import PrivateLetter from '@/components/notice/children/PrivateLetter'
 
 Vue.use(Router)
 
@@ -131,6 +134,23 @@ export default new Router({
               path: 'operationlog',
               name: 'operationlog',
               component: OperationLog
+            }
+          ]
+        },
+        {
+          path: '/notice',
+          name: 'notice',
+          component: Notice,
+          children: [
+            {
+              path: 'bulletin',
+              name: 'bulletin',
+              component: Bulletin
+            },
+            {
+              path: 'private',
+              name: 'private',
+              component: PrivateLetter
             }
           ]
         }
