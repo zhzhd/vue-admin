@@ -36,11 +36,7 @@
             <Input v-model="holidayForm.applyReason" type="textarea" placeholder="请输入休假申请原因" />
         </FormItem>
         <FormItem prop="applyFile" class="form-item-square file-upload" label="附件上传：" >
-            <Upload :action="uploadUrl" :format="['jpg','png','jpeg']" :max-size="2048" :on-success="uploadSuccess" :on-error="uploadError" :on-progress="uploadProgress">
-                <div :style="uploadStyle">
-                    <Icon type="ios-add" size="48"></Icon>
-                </div>
-            </Upload>
+            <upload-component :uploadUrl="uploadUrl"  @uploadError="uploadError" @uploadSuccess="uploadSuccess" @uploadProgress="uploadProgress"></upload-component>
         </FormItem>
         
     </Form>
@@ -58,7 +54,11 @@
     
 </style>
 <script>
+import UploadComponent from '../../commen/UploadComponent'
     export default {
+        components: {
+            UploadComponent
+        },
         data () {
             return {
                 holidayForm: {
@@ -101,21 +101,22 @@
                     applyFile: ''
                 },
                 ruleValidate: {},
-                uploadStyle: {
-                    'width': '58px',
-                    'height': '58px',
-                    'line-height': '58px',
-                    'text-align': 'center',
-                    'border': '1px solid #ccc',
-                    'cursor': 'pointer'
-                } 
+                uploadUrl: 'test',
+                // uploadStyle: {
+                //     'width': '58px',
+                //     'height': '58px',
+                //     'line-height': '58px',
+                //     'text-align': 'center',
+                //     'border': '1px solid #ccc',
+                //     'cursor': 'pointer'
+                // } 
             }
         },
-        computed: {
-            uploadUrl () {
-                return 'url地址'
-            }
-        },
+        // computed: {
+        //     uploadUrl () {
+        //         return 'url地址'
+        //     }
+        // },
         methods: {
             handelChangeRadio (name) {
                 console.log(name)

@@ -10,11 +10,12 @@
             placeholder="请输入您的意见和建议，我们会关注您的反馈，不管改进，不断提升" />
         </FormItem>
         <FormItem prop="upload" class="form-item-square file-upload" label="附件上传：" >
-            <Upload :action="uploadUrl" :format="['jpg','png','jpeg']" :max-size="2048" :on-success="uploadSuccess" :on-error="uploadError" :on-progress="uploadProgress">
+            <!-- <Upload :action="uploadUrl" :format="['jpg','png','jpeg']" :max-size="2048" :on-success="uploadSuccess" :on-error="uploadError" :on-progress="uploadProgress">
                 <div :style="uploadStyle">
                     <Icon type="ios-add" size="48"></Icon>
                 </div>
-            </Upload>
+            </Upload> -->
+            <upload-component :uploadUrl="uploadUrl" @uploadProgress="uploadProgress" @uploadSuccess="uploadProgress" @uploadError="uploadError"></upload-component>
         </FormItem>
         <FormItem>
             <Button shape="circle" type="primary" @click="handleSubmit('formReport')" class="feedback-btn">提交</Button>
@@ -34,7 +35,11 @@
     }
 </style>
 <script>
+import UploadComponent from '../commen/UploadComponent'
     export default {
+        components: {
+            UploadComponent
+        },
         data () {
             return {
                 feedbackForm: {
@@ -55,6 +60,7 @@
                     ],
                     feedback: ''
                 },
+                uploadUrl: 'test',
                 ruleValidate: {
                     category: [
                         { required: true, message: '请选择意见反馈类型', trigger: 'change'}
@@ -63,21 +69,18 @@
                         { required: true, message: '请填写您的反馈意见', trigger: 'blur'}
                     ]
                 },
-                uploadStyle: {
-                    'width': '58px',
-                    'height': '58px',
-                    'line-height': '58px',
-                    'text-align': 'center',
-                    'border': '1px solid #ccc',
-                    'cursor': 'pointer'
-                }
+                // uploadStyle: {
+                //     'width': '58px',
+                //     'height': '58px',
+                //     'line-height': '58px',
+                //     'text-align': 'center',
+                //     'border': '1px solid #ccc',
+                //     'cursor': 'pointer'
+                // }
             
             }
         },
         computed: {
-            uploadUrl () {
-                return '上传地址'
-            }
         },
         methods: {
             uploadProgress () {
@@ -86,8 +89,9 @@
             uploadSuccess () {
                 //成功回调
             },
-            uploadError () {
+            uploadError (err) {
                 //失败回调
+                console.log(err)
             }
         }
     }

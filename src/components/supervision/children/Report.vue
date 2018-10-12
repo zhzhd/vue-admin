@@ -23,11 +23,7 @@
             <Input v-model="formReport.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入举报内容" :maxlength="2000" :resize="false" />
         </FormItem>
         <FormItem prop="upload" class="form-item-square file-upload" label="附件上传：" >
-            <Upload :action="uploadUrl" :format="['jpg','png','jpeg']" :max-size="2048" :on-success="uploadSuccess" :on-error="uploadError" :on-progress="uploadProgress">
-                <div :style="uploadStyle">
-                    <Icon type="ios-add" size="48"></Icon>
-                </div>
-            </Upload>
+            <upload-component :uploadUrl="uploadUrl"  @uploadProgress="uploadProgress" @uploadSuccess="uploadSuccess" @uploadError="uploadError"></upload-component>
         </FormItem>
         <FormItem>
             <Button shape="circle" type="primary" @click="handleSubmit('formReport')" class="report-btn">提交</Button>
@@ -51,7 +47,11 @@
     
 </style>
 <script>
+import UploadComponent from '../../commen/UploadComponent'
     export default {
+        components: {
+            UploadComponent
+        },
         data () {
             return {
                 formReport: {
@@ -60,8 +60,9 @@
                     userName: '',
                     topic: '',
                     content: '',
-                    uploadUrl: ''              //附件，支持部超过5个，逗号分隔开的字符串
+                    //uploadUrl: ''              //附件，支持部超过5个，逗号分隔开的字符串
                 },
+                uploadUrl: 'test',
                 mattersList: [
                     {
                         label: '收受贿赂',
@@ -101,14 +102,14 @@
                         { required: true, message: '请输入举报内容', trigger: 'blur'}
                     ],
                 },
-                uploadStyle: {
-                    'width': '58px',
-                    'height': '58px',
-                    'line-height': '58px',
-                    'text-align': 'center',
-                    'border': '1px solid #ccc',
-                    'cursor': 'pointer'
-                }
+                // uploadStyle: {
+                //     'width': '58px',
+                //     'height': '58px',
+                //     'line-height': '58px',
+                //     'text-align': 'center',
+                //     'border': '1px solid #ccc',
+                //     'cursor': 'pointer'
+                // }
             }
         },
         methods: {
@@ -125,12 +126,6 @@
                 this.$refs[name].validate((valid) => {
                     console.log(valid);    
                 })
-            }
-        },
-        computed: {
-            uploadUrl () {
-                //上传附件的请求地址
-                return 'abc'
             }
         }
     }

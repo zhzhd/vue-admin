@@ -11,6 +11,14 @@
 
 </style>
 <script>
+const styleObj = {
+    'width': '58px',
+    'height': '58px',
+    'line-height': '58px',
+    'text-align': 'center',
+    'border': '1px solid #ccc',
+    'cursor': 'pointer'
+}
     export default {
         props: {
             uploadUrl: {
@@ -19,12 +27,12 @@
             },
             uploadStyle: {
                 type: Object,
-                default: () => {}
+                default: () => styleObj
             }
         },
         data () {
             return {
-                msg: '这是一个上传文件的公共组件'
+                msg: '这是一个上传文件的公共组件',
             }
         },
         methods: {
