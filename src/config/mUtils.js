@@ -49,6 +49,14 @@ export const getHandleNumber = num => {
 export const getMaxNum = (array) => {
     return Math.max(...array);
 }
+/**
+ * 获取元素的属性值
+ * @param {Element} ele 
+ * @param {Attribute} attr 
+ */
+export const getAttrVal = (ele, attr) => {
+    return ele.currentStyle ? ele.currentStyle[attr] : window.getComputedStyle(ele, null)[attr] || 0;
+}
 
 
 

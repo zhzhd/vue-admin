@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/login/Login'
 import Index from '@/components/Index'
+import Home from '@/components/home/Home'
 import Company from '@/components/companyInfo/Company'
 import ManagerUsers from '@/components/users/ManagerUsers'
 import Product from '@/components/product/Product'
@@ -36,8 +37,13 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index,
-       
+      redirect: '/home',
       children: [
+        {
+          path: 'home',
+          name: 'home',
+          component: Home
+        },
         {
           path: '/company',
           name: 'company',

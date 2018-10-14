@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Upload, Message, Sider, Menu, Submenu, MenuItem, Icon, Select, Option, Badge, Divider, DatePicker} from 'iview'
+import {Button, Form, FormItem, Input, Radio, RadioGroup, Checkbox, CheckboxGroup, Upload, Message, Sider, Menu, Submenu, MenuItem, Icon, Select, Option, Badge, Divider, DatePicker, Steps, Step, Carousel, CarouselItem, Table} from 'iview'
 import 'iview/dist/styles/iview.css'
 import './theme/index.less'
 import store from '@/store'
@@ -28,6 +28,11 @@ Vue.component('Option', Option)
 Vue.component('Badge', Badge)
 Vue.component('Divider', Divider)
 Vue.component('DatePicker', DatePicker)
+Vue.component('Steps', Steps)
+Vue.component('Step', Step)
+Vue.component('Carousel', Carousel)
+Vue.component('CarouselItem', CarouselItem)
+Vue.component('Table', Table)
 Vue.prototype.$Message = Message
 Vue.config.productionTip = false
 /* eslint-disable no-new */

@@ -1,16 +1,14 @@
 <template>
-    <section>
-        <p>{{ msg }}</p>
-    </section>
+    <p>{{ msg }}</p>
 </template>
 <style lang="less">
-
+    
 </style>
 <script>
     export default {
         data () {
             return {
-                msg: "进度查询页面"
+                msg: "回显举报的内容"
             }
         }
     }
